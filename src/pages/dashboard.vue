@@ -35,7 +35,7 @@
         try {
           const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
           const apiUrl = import.meta.env.VITE_API_URL; 
-          const response = await fetch('${apiUrl}/api/profile/me', {
+          const response = await fetch(`${apiUrl}/api/profile/me`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`, // Attach token to the request
