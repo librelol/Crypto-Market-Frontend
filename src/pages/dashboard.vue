@@ -24,7 +24,7 @@
   export default {
     data() {
       return {
-        username: '', // To hold the logged-in user's username
+        displayname: '', // To hold the logged-in user's username
       };
     },
     mounted() {
