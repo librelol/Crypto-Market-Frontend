@@ -7,7 +7,7 @@
             <v-col>
               <v-card>
                 <v-card-title>
-                  <span class="headline">Welcome, {{ username }}</span>
+                  <span class="headline">Welcome, {{ displayname }}</span>
                 </v-card-title>
                 <v-card-text>
                   <p>This is your dashboard.</p>
@@ -34,7 +34,8 @@
       async fetchUsername() {
         try {
           const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-          const response = await fetch('${apiUrl}/api/me', {
+          const apiUrl = import.meta.env.VITE_API_URL; 
+          const response = await fetch('${apiUrl}/api/profile/me', {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`, // Attach token to the request
@@ -47,10 +48,10 @@
           }
   
           const data = await response.json();
-          this.username = data.username; // Store username in data
+          this.displayname = data.displayName; // Store username in data
         } catch (error) {
           console.error('Error fetching username:', error);
-          this.username = 'Guest'; // Fallback if there's an error
+          this.displayname = 'Guest'; // Fallback if there's an error
         }
       },
     },

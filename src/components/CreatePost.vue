@@ -56,7 +56,7 @@
   <script>
   import axios from 'axios';
   
-  const apiUrl = process.env.VUE_APP_API_URL; 
+  const apiUrl = import.meta.env.VITE_API_URL; 
   export default {
     data() {
       return {
@@ -91,7 +91,7 @@
           }
   
           try {
-            const response = await axios.post('${apiUrl}/api/post/create_post', formData, {
+            const response = await axios.post(`${apiUrl}/api/post/create_post`, formData, {
               headers: {
                 'Content-Type': 'multipart/form-data',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,

@@ -50,7 +50,7 @@ const changeDisplayName = async () => {
     const apiUrl = import.meta.env.VITE_API_URL; 
     try {
         const apiHost = import.meta.env.api_host
-        const response = await fetch('${apiUrl}/api/profile/change_display_name', {
+        const response = await fetch(`${apiUrl}/api/profile/change_display_name`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,

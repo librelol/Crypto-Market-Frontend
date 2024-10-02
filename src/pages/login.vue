@@ -44,8 +44,10 @@ export default {
     methods: {
         async login() {
             this.errorMessage = ''; // Clear previous errors
+            
             try {
-                const response = await fetch('${apiUrl}/api/login', { // API endpoint for login
+                const apiUrl = import.meta.env.VITE_API_URL; 
+                const response = await fetch(`${apiUrl}/api/auth/login`, { // API endpoint for login
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
