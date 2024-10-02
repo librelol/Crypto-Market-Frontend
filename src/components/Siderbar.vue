@@ -1,11 +1,9 @@
 <template>
-  <v-navigation-drawer theme="dark" permanent>
-    <v-list color="transparent">
-      <v-list-item title="Crypto Market" subtitle="Vuetify"></v-list-item>
-      <v-divider></v-divider>
-      <v-list-item 
-        v-for="item in menuItems" 
-        :key="item.title" 
+  <v-navigation-drawer app>
+    <v-list v-if="hasToken">
+      <v-list-item
+        v-for="item in menuItems"
+        :key="item.title"
         @click="navigateTo(item.route)"
       >
         <v-list-item-title>
@@ -17,7 +15,8 @@
 
     <template v-slot:append>
       <div class="pa-2">
-        <v-btn block class="bg-deep-purple" @click="logout">Logout</v-btn>
+        <v-btn block class="bg-deep-purple" v-if="hasToken" @click="logout">Logout</v-btn>
+        <v-btn block class="bg-deep-purple" v-else @click="login">Login</v-btn>
       </div>
     </template>
   </v-navigation-drawer>
@@ -33,18 +32,24 @@ export default {
       ],
     };
   },
+  computed: {
+    hasToken() {
+      return !!localStorage.getItem('token'); // Check if token exists in localStorage
+    }
+  },
   methods: {
     navigateTo(route) {
-      this.$router.push(route); // Navigate to the selected route
+      this.$router.push(route);
     },
     logout() {
-      localStorage.removeItem('token'); // Clear the token
+      // Add your logout logic here
+      localStorage.removeItem('token'); // Remove token from localStorage
       this.$router.push('/login'); // Redirect to login page
     },
-  },
+    login() {
+      // Add your login logic here
+      this.$router.push('/login'); // Redirect to login page
+    }
+  }
 };
 </script>
-
-<style scoped>
-/* Add any additional styles if needed */
-</style>
