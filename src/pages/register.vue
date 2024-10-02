@@ -48,7 +48,7 @@
         this.errorMessage = ''; // Clear previous errors
         this.successMessage = ''; // Clear previous success messages
         try {
-          const response = await fetch('http://localhost:8000/api/register', { // API endpoint for registration
+          const response = await fetch('${apiUrl}/api/register', { // API endpoint for registration
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

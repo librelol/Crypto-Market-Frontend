@@ -34,7 +34,7 @@
       async fetchUsername() {
         try {
           const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
-          const response = await fetch('http://localhost:8000/api/me', {
+          const response = await fetch('${apiUrl}/api/me', {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`, // Attach token to the request

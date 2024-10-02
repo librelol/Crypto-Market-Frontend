@@ -48,7 +48,8 @@ const displayNameRules = [
 const changeDisplayName = async () => {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch('http://localhost:8000/api/profile/change_display_name', {
+        const apiHost = import.meta.env.api_host
+        const response = await fetch('${apiUrl}/api/profile/change_display_name', {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,

@@ -45,7 +45,7 @@ export default {
         async login() {
             this.errorMessage = ''; // Clear previous errors
             try {
-                const response = await fetch('http://localhost:8000/api/login', { // API endpoint for login
+                const response = await fetch('${apiUrl}/api/login', { // API endpoint for login
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

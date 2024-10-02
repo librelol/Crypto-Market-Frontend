@@ -90,7 +90,7 @@
           }
   
           try {
-            const response = await axios.post('http://localhost:8000/api/post/create_post', formData, {
+            const response = await axios.post('${apiUrl}/api/post/create_post', formData, {
               headers: {
                 'Content-Type': 'multipart/form-data',
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
