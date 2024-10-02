@@ -27,7 +27,7 @@ const goToLogin = () => {
 };
 
 const goToSignup = () => {
-  window.location.href = '/signup'; // Redirect to signup page
+  window.location.href = '/register'; // Redirect to signup page
 };
 </script>
 
