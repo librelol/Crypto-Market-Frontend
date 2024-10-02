@@ -58,6 +58,7 @@
   
   const deleteAccount = async () => {
     const token = localStorage.getItem('token');
+    const apiUrl = import.meta.env.VITE_API_URL; 
     try {
       const response = await fetch('${apiUrl}/api/user/delete_account', {
         method: 'POST',

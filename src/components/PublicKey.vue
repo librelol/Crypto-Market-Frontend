@@ -42,6 +42,7 @@
   const updatePublicKey = async () => {
     try {
       const token = localStorage.getItem('token'); // Retrieve token from local storage
+      const apiUrl = process.env.VITE_API_URL; 
       const response = await fetch('${apiUrl}/api/profile/public_key', {
         method: 'POST',
         headers: {

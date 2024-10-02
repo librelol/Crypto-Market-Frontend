@@ -47,6 +47,7 @@ const displayNameRules = [
 
 const changeDisplayName = async () => {
     const token = localStorage.getItem('token');
+    const apiUrl = import.meta.env.VITE_API_URL; 
     try {
         const apiHost = import.meta.env.api_host
         const response = await fetch('${apiUrl}/api/profile/change_display_name', {

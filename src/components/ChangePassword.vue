@@ -76,6 +76,7 @@
   // Function to handle password change
   const changePassword = async () => {
     const token = localStorage.getItem('token'); // Retrieve token from local storage
+    const apiUrl = process.env.VITE_API_URL; // Retrieve API URL from environment variables
     const response = await fetch('${apiUrl}/api/user/change_password', {
       method: 'POST',
       headers: {

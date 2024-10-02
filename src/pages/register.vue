@@ -48,7 +48,8 @@
         this.errorMessage = ''; // Clear previous errors
         this.successMessage = ''; // Clear previous success messages
         try {
-          const response = await fetch('${apiUrl}/api/register', { // API endpoint for registration
+          const apiUrl = import.meta.env.VITE_API_URL; // Access the environment variable here
+          const response = await fetch(`${apiUrl}/api/auth/register`, { // API endpoint for registration
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

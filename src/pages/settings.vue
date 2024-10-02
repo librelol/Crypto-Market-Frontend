@@ -70,6 +70,7 @@ const error = ref('');
 const fetchUserProfile = async () => {
   const token = localStorage.getItem('token');
   try {
+    const apiUrl = import.meta.env.VITE_API_URLL; 
     const response = await fetch('${apiUrl}/api/profile/me', {
       method: 'GET',
       headers: {
