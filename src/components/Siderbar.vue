@@ -4,6 +4,7 @@
       <v-list-item
         v-for="item in menuItems"
         :key="item.title"
+        v-if="item.visible"
         @click="navigateTo(item.route)"
       >
         <v-list-item-title>
@@ -27,8 +28,8 @@ export default {
   data() {
     return {
       menuItems: [
-        { title: 'Dashboard', route: '/dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Settings', route: '/settings', icon: 'mdi-gavel' },
+        { title: 'Dashboard', route: '/dashboard', icon: 'mdi-view-dashboard', visible: true },
+        { title: 'Settings', route: '/settings', icon: 'mdi-gavel', visible: true },
       ],
       hasToken: !!localStorage.getItem('token'), // Initialize hasToken based on localStorage
     };
@@ -52,6 +53,12 @@ export default {
     login() {
       // Add your login logic here
       this.$router.push('/login'); // Redirect to login page
+    },
+    toggleVisibility(itemTitle) {
+      const item = this.menuItems.find(i => i.title === itemTitle);
+      if (item) {
+        item.visible = !item.visible;
+      }
     }
   }
 };
