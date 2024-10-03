@@ -46,6 +46,10 @@
           <v-divider></v-divider> <!-- Divider for separation -->
 
           <v-card-actions>
+            <SetProfileImage @profileImageChanged="fetchUserProfile" />
+          </v-card-actions>
+
+          <v-card-actions>
             <ChangePassword @passwordChanged="fetchUserProfile" />
           </v-card-actions>
 
