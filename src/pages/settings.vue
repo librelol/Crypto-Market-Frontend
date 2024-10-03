@@ -8,13 +8,6 @@
           </v-card-title>
           <v-card-text>
             <v-list>
-
-              <v-list-item>
-                <v-list-item-content>
-                  <img v-if="profileImageUrl" :src="profileImageUrl" alt="Profile Image">
-                  <v-icon v-else>mdi-account</v-icon>
-                </v-list-item-content>
-              </v-list-item>
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>DisplayName:</v-list-item-title>
@@ -46,10 +39,6 @@
           <v-divider></v-divider> <!-- Divider for separation -->
 
           <v-card-actions>
-            <SetProfileImage @profileImageChanged="fetchUserProfile" />
-          </v-card-actions>
-
-          <v-card-actions>
             <ChangePassword @passwordChanged="fetchUserProfile" />
           </v-card-actions>
 
@@ -77,7 +66,7 @@ const displayname= ref('');
 const publicKey = ref('');
 const success = ref('');
 const error = ref('');
-const profileImageUrl = ref(null); // To hold the profile image URL
+
 
 const fetchUserProfile = async () => {
   const token = localStorage.getItem('token');
@@ -98,7 +87,6 @@ const fetchUserProfile = async () => {
     const data = await response.json();
     displayname.value = data.displayName;
     publicKey.value = data.public_key || 'Not set';
-    profileImageUrl.value = data.profileImageUrl; // Store profile image URL
     success.value = '';
   } catch (error) {
     console.error('Error fetching user profile:', error);
