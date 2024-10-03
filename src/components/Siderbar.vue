@@ -30,11 +30,13 @@ export default {
         { title: 'Dashboard', route: '/dashboard', icon: 'mdi-view-dashboard' },
         { title: 'Settings', route: '/settings', icon: 'mdi-gavel' },
       ],
+      hasToken: !!localStorage.getItem('token'), // Initialize hasToken based on localStorage
     };
   },
-  computed: {
-    hasToken() {
-      return !!localStorage.getItem('token'); // Check if token exists in localStorage
+  watch: {
+    // Watch for changes in localStorage token
+    '$route'(to, from) {
+      this.hasToken = !!localStorage.getItem('token');
     }
   },
   methods: {
@@ -44,6 +46,7 @@ export default {
     logout() {
       // Add your logout logic here
       localStorage.removeItem('token'); // Remove token from localStorage
+      this.hasToken = false; // Update hasToken
       this.$router.push('/login'); // Redirect to login page
     },
     login() {
