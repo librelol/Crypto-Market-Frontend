@@ -54,7 +54,7 @@ export default {
     logout() {
       // Add your logout logic here
       localStorage.removeItem('token'); // Remove token from localStorage
-      this.$router.push('/login'); // Redirect to login page
+      this.$router.push('/'); // Redirect to login page
     },
     login() {
       // Add your login logic here
