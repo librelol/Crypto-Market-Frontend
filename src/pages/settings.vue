@@ -8,6 +8,13 @@
           </v-card-title>
           <v-card-text>
             <v-list>
+
+              <v-list-item>
+                <v-list-item-content>
+                  <img v-if="profileImageUrl" :src="profileImageUrl" alt="Profile Image">
+                  <v-icon v-else>mdi-account</v-icon>
+                </v-list-item-content>
+              </v-list-item>
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>DisplayName:</v-list-item-title>
@@ -66,11 +73,12 @@ const displayname= ref('');
 const publicKey = ref('');
 const success = ref('');
 const error = ref('');
+const profileImageUrl = ref(null); // To hold the profile image URL
 
 const fetchUserProfile = async () => {
   const token = localStorage.getItem('token');
   try {
-    const apiUrl = import.meta.env.VITE_API_URLL; 
+    const apiUrl = import.meta.env.VITE_API_URL; 
     const response = await fetch(`${apiUrl}/api/profile/me`, {
       method: 'GET',
       headers: {
@@ -86,15 +94,17 @@ const fetchUserProfile = async () => {
     const data = await response.json();
     displayname.value = data.displayName;
     publicKey.value = data.public_key || 'Not set';
+    profileImageUrl.value = data.profileImageUrl; // Store profile image URL
     success.value = '';
-    error.value = '';
-  } catch (err) {
-    error.value = err.message;
-    success.value = '';
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    error.value = 'Failed to fetch user profile';
   }
 };
 
-onMounted(fetchUserProfile);
+onMounted(() => {
+  fetchUserProfile();
+});
 </script>
 
 <style scoped>
