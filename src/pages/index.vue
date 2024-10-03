@@ -5,10 +5,11 @@
         <v-col cols="12" md="8" lg="6">
           <v-card class="elevation-12">
             <v-toolbar color="primary" dark>
-              <v-toolbar-title>Crypto Based Marketplace</v-toolbar-title>
+              <v-toolbar-title>Direct Monero</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <p>Discover the best products. Enjoy your shopping experience! On an open source platform!</p>
+              <p>Trade monero directly, using PGP for communication. On an open source platform!</p>
+              <p>As of now we do use Vercel and Cloudflare, this is subject to change.</p>
             </v-card-text>
             <v-card-actions>
               <v-btn color="primary" @click="goToLogin">Login</v-btn>
