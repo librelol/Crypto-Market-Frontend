@@ -11,7 +11,7 @@
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>DisplayName:</v-list-item-title>
-                  <v-list-item-subtitle>{{ displayName }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{ displayname }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
 
@@ -62,7 +62,7 @@ import { ref, onMounted } from 'vue';
 import ChangePassword from '@/components/ChangePassword.vue';
 import PublicKey from '@/components/PublicKey.vue'; // Ensure PublicKey is imported
 
-const displayName= ref('');
+const displayname= ref('');
 const publicKey = ref('');
 const success = ref('');
 const error = ref('');
@@ -84,7 +84,7 @@ const fetchUserProfile = async () => {
     }
 
     const data = await response.json();
-    displayName.value = data.displayName;
+    displayname.value = data.displayName;
     publicKey.value = data.public_key || 'Not set';
     success.value = '';
     error.value = '';

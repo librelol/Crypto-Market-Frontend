@@ -51,7 +51,7 @@
           this.displayname = data.displayName; // Store username in data
         } catch (error) {
           console.error('Error fetching username:', error);
-          this.displayname = 'Guest'; // Fallback if there's an error
+          this.displayname = 'Guest (Failed to get displayname set on in settings)'; // Fallback if there's an error
         }
       },
     },
