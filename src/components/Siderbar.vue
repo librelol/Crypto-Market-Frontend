@@ -1,5 +1,12 @@
 <template>
   <v-navigation-drawer app>
+    <template v-slot:prepend>
+      <div class="pa-2">
+        <h3 class="title">Direct Monero</h3>
+        <p class="subtitle">Trade monero with real people</p>
+      </div>
+    </template>
+
     <v-list>
       <v-list-item
         v-for="item in menuItems"
@@ -28,6 +35,9 @@ export default {
     return {
       menuItems: [
         { title: 'Dashboard', route: '/dashboard', icon: 'mdi-view-dashboard' },
+        { title: 'Buy Monero', route: '/buy', icon: 'mdi-currency-usd' },
+        { title: 'Post Listing', route: '/postlisting', icon: 'mdi-plus' },
+        { title: 'My Listings', route: '/myposts', icon: 'mdi-format-list-bulleted' },
         { title: 'Settings', route: '/settings', icon: 'mdi-gavel' },
       ],
     };
@@ -53,3 +63,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.bg-deep-purple {
+  background-color: #673ab7 !important;
+}
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 1rem;
+  color: #757575;
+}
+</style>
