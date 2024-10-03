@@ -1,10 +1,9 @@
 <template>
   <v-navigation-drawer app>
-    <v-list v-if="hasToken">
+    <v-list>
       <v-list-item
         v-for="item in menuItems"
         :key="item.title"
-        v-if="item.visible"
         @click="navigateTo(item.route)"
       >
         <v-list-item-title>
@@ -28,16 +27,14 @@ export default {
   data() {
     return {
       menuItems: [
-        { title: 'Dashboard', route: '/dashboard', icon: 'mdi-view-dashboard', visible: true },
-        { title: 'Settings', route: '/settings', icon: 'mdi-gavel', visible: true },
+        { title: 'Dashboard', route: '/dashboard', icon: 'mdi-view-dashboard' },
+        { title: 'Settings', route: '/settings', icon: 'mdi-gavel' },
       ],
-      hasToken: !!localStorage.getItem('token'), // Initialize hasToken based on localStorage
     };
   },
-  watch: {
-    // Watch for changes in localStorage token
-    '$route'(to, from) {
-      this.hasToken = !!localStorage.getItem('token');
+  computed: {
+    hasToken() {
+      return !!localStorage.getItem('token'); // Check if token exists in localStorage
     }
   },
   methods: {
@@ -47,18 +44,11 @@ export default {
     logout() {
       // Add your logout logic here
       localStorage.removeItem('token'); // Remove token from localStorage
-      this.hasToken = false; // Update hasToken
       this.$router.push('/login'); // Redirect to login page
     },
     login() {
       // Add your login logic here
       this.$router.push('/login'); // Redirect to login page
-    },
-    toggleVisibility(itemTitle) {
-      const item = this.menuItems.find(i => i.title === itemTitle);
-      if (item) {
-        item.visible = !item.visible;
-      }
     }
   }
 };
