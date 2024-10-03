@@ -8,11 +8,7 @@
               <v-toolbar-title>Crypto Based Marketplace</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <p>Trade monero anonymously with built in functionality to use your PGP key.</p>
-              <!-- <p>
-                For more information, read our 
-                <a href="/writeup" style="color: #1976d2; text-decoration: none;">writeup</a>.
-              </p> -->
+              <p>Discover the best products. Enjoy your shopping experience! On an open source platform!</p>
             </v-card-text>
             <v-card-actions>
               <v-btn color="primary" @click="goToLogin">Login</v-btn>
